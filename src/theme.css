@@ -1,0 +1,136 @@
+/* ===== Cove Vault theme — edit ONLY this file to re-skin the app =====
+   Palette sampled from the Coconut Cove Creations Payhip banner/logo. */
+:root {
+  --font-display: 'Fredoka', 'Nunito', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+  --radius: 18px; --radius-sm: 12px;
+
+  --ocean: #005a82;     /* deep logo outline blue */
+  --lagoon: #1c879f;    /* primary teal */
+  --seafoam: #68b7b7;
+  --aqua: #90cdcf;
+  --mist: #dbedeb;
+  --coconut: #7a4e30;   /* coconut shell brown */
+  --sand: #f6ead2;
+  --starfish: #f0845c;  /* coral accent */
+  --duckie: #ffd23f;    /* rubber duck yellow */
+  --shell: #a98bd6; --grape: #8e5fd0; --plum: #5b3592;     /* purple seashell */
+  --hibiscus: #f6a5b8;
+
+  --bg: #f3faf8; --surface: #ffffff; --surface-2: #e9f5f3;
+  --text: #17384a; --muted: #5f7f88; --border: #cfe6e3;
+  --primary: #8e5fd0; --primary-text: #ffffff; --accent: var(--duckie);
+  --shadow: 0 6px 18px rgba(0, 90, 130, .12);
+}
+:root[data-theme='dark'] {
+  --bg: #0d2430; --surface: #143341; --surface-2: #1a3f4f;
+  --text: #e8f6f4; --muted: #9cc2c4; --border: #24556a;
+  --primary: var(--shell); --primary-text: #1b1030;
+  --shadow: 0 6px 18px rgba(0, 0, 0, .35);
+}
+* { box-sizing: border-box }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-tap-highlight-color: transparent }
+h1, h2, h3, h4 { font-family: var(--font-display); margin: .2em 0; color: var(--text) }
+h2 { color: var(--ocean) } [data-theme=dark] h2 { color: var(--aqua) }
+.app { max-width: 1200px; margin: 0 auto; padding-bottom: 90px }
+.top { display: flex; align-items: center; gap: 10px; padding: 10px 16px; position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px) }
+.top h1 { flex: 1; font-size: 1.4rem; color: var(--grape) } .logo { height: 44px }
+main { padding: 0 14px }
+.nav { position: fixed; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-around; background: var(--surface); border-top: 2px solid var(--border); padding: 6px 4px calc(6px + env(safe-area-inset-bottom)); z-index: 10; box-shadow: var(--shadow) }
+.nav button { background: none; border: 0; display: flex; flex-direction: column; align-items: center; font: 600 .75rem var(--font-display); color: var(--muted); padding: 4px 10px; border-radius: var(--radius-sm) }
+.nav button span { font-size: 1.35rem } .nav button.on { color: var(--primary); background: var(--surface-2) }
+@media (min-width: 800px) { .nav { position: sticky; top: 64px; bottom: auto; border: 0; background: none; box-shadow: none; justify-content: center; gap: 8px } .nav button { flex-direction: row; gap: 6px; font-size: .95rem } .app { padding-bottom: 20px } }
+button, .btn { font: 700 .95rem var(--font-display); border: 2px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; padding: 8px 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap }
+button:disabled { opacity: .5 }
+.primary { background: var(--primary); color: var(--primary-text); border-color: transparent; box-shadow: 0 3px 0 var(--plum) }
+.ghost { border-color: transparent; background: transparent; padding: 6px 10px }
+.danger { color: #fff; background: var(--starfish); border-color: transparent }
+input, select, textarea { font: inherit; color: var(--text); background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius-sm); padding: 9px 12px; width: 100%; min-width: 0 }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--seafoam) }
+textarea { min-height: 80px } label { display: block; font-weight: 600; font-size: .85rem; color: var(--muted); margin: 8px 0 } label > input, label > select, label > textarea { margin-top: 4px; color: var(--text) }
+.row { display: flex; align-items: center; gap: 8px } .head { margin: 10px 0 } .head h2 { flex: 1 }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px } .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px } .filters input { flex: 2 1 220px } .filters select { flex: 1 1 110px; width: auto }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px }
+.card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; cursor: pointer; border: 2px solid var(--border); transition: transform .15s }
+.card:hover { transform: translateY(-2px) } .card.pad { padding: 14px; margin-bottom: 12px; cursor: default } .card.pad:hover { transform: none }
+.thumb { aspect-ratio: 1; background: linear-gradient(135deg, var(--mist), var(--aqua)); position: relative; display: grid; place-items: center; font-size: 3rem; overflow: hidden }
+.thumb img { width: 100%; height: 100%; object-fit: cover } .collage { grid-template-columns: 1fr 1fr } .collage img { aspect-ratio: 1 }
+.store { position: absolute; top: 8px; left: 8px; font: normal 700 .7rem var(--font-display); padding: 3px 9px; border-radius: 999px; background: var(--surface); color: var(--ocean) }
+.s-Booth { background: #fc4d50; color: #fff } .s-Gumroad { background: #ff90e8; color: #222 } .s-Jinxxy { background: var(--shell); color: #fff } .s-Payhip { background: var(--lagoon); color: #fff }
+.body { padding: 10px 12px } .body h4 { font-size: .98rem; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden } small, .muted { color: var(--muted) }
+.chip { display: inline-flex; align-items: center; gap: 4px; font-size: .72rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: var(--surface-2); margin: 2px } .chip.base { background: var(--sand); color: var(--coconut) }
+.chip.hot { background: var(--duckie); color: #5a4300 } .p-high { background: var(--starfish); color: #fff } .p-med { background: var(--duckie); color: #5a4300 }
+.chip.big { flex-direction: column; align-items: flex-start; padding: 8px 14px; border-radius: var(--radius-sm); font-size: .85rem; background: var(--surface); border: 2px solid var(--border) }
+.totals { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 10px } .tags { display: flex; flex-wrap: wrap; margin-top: 6px }
+.x { padding: 0 4px; border: 0; background: none; font-size: 1rem }
+.empty { text-align: center; padding: 50px 20px; color: var(--muted) } .empty .bob { font-size: 4rem; animation: bob 2.4s ease-in-out infinite } @keyframes bob { 50% { transform: translateY(-8px) rotate(-6deg) } }
+.modal { position: fixed; inset: 0; background: rgba(0, 40, 60, .45); display: flex; align-items: flex-end; justify-content: center; z-index: 50 }
+.sheet { background: var(--bg); width: 100%; max-width: 620px; max-height: 92vh; overflow: auto; border-radius: 26px 26px 0 0; padding: 18px 18px calc(18px + env(safe-area-inset-bottom)) }
+@media (min-width: 800px) { .modal { align-items: center } .sheet { border-radius: 26px } }
+fieldset { border: 2px dashed var(--border); border-radius: var(--radius-sm); display: flex; flex-wrap: wrap; gap: 14px } .check { display: flex; align-items: center; gap: 6px; color: var(--text); margin: 2px 0 } .check input { width: auto }
+.actions { margin-top: 14px; flex-wrap: wrap }
+.masonry { columns: 2 170px; column-gap: 12px } .masonry figure { break-inside: avoid; margin: 0 0 12px; background: var(--surface); border-radius: var(--radius); padding: 8px; box-shadow: var(--shadow) } .masonry img { width: 100%; border-radius: var(--radius-sm); display: block }
+.masonry input { border: 0; padding: 4px; background: none }
+.pal { display: flex; gap: 3px; margin: 6px 0 } .pal i { flex: 1; height: 16px; border-radius: 5px; cursor: copy; min-width: 14px }
+.kanban { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory } .col { flex: 0 0 210px; background: var(--surface-2); border-radius: var(--radius); padding: 10px; scroll-snap-align: start; min-height: 120px }
+.mini { background: var(--surface); border-radius: var(--radius-sm); padding: 8px 10px; margin-bottom: 8px; box-shadow: var(--shadow); cursor: pointer; display: flex; flex-direction: column } .mini.done { opacity: .55; text-decoration: line-through }
+.stages { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 8px } .stages button.on { background: var(--duckie); border-color: var(--duckie); color: #4a3800 }
+.center { text-align: center } code { background: var(--surface-2); padding: 1px 5px; border-radius: 6px }
+
+/* ===== Cove Studio additions ===== */
+.top h1 { background: linear-gradient(90deg, var(--grape), #c08a00); -webkit-background-clip: text; background-clip: text; color: transparent }
+.nav button.on { color: var(--grape) } [data-theme=dark] .nav button.on { color: var(--duckie) }
+@media (max-width: 799px) { .nav button.desk { display: none } }
+@media (min-width: 800px) { .nav { flex-wrap: wrap } }
+button.on { background: var(--duckie); border-color: var(--duckie); color: #4a3800 }
+.yellow { background: var(--duckie); color: #4a3800; border-color: transparent; box-shadow: 0 3px 0 #c9a000 }
+.hero { background: linear-gradient(135deg, var(--grape), var(--shell) 60%, var(--hibiscus)); color: #fff; border-radius: 26px; padding: 18px 20px; margin: 10px 0 14px; box-shadow: var(--shadow) }
+.hero h2 { color: #fff !important; font-size: 1.35rem; line-height: 1.25 } .hero small { color: var(--duckie); font-weight: 800; letter-spacing: .05em; text-transform: uppercase }
+.quick-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 10px 0 }
+.quick-grid button { flex-direction: column; border-radius: var(--radius); padding: 14px; font-size: 1.6rem; background: var(--surface); box-shadow: var(--shadow); white-space: normal }
+.quick-grid b { font-size: .95rem } .quick-grid small { font-size: .75rem; color: var(--muted) }
+.fab { position: fixed; right: 18px; bottom: calc(84px + env(safe-area-inset-bottom)); width: 60px; height: 60px; border-radius: 50%; justify-content: center; font-size: 2rem; padding: 0; background: var(--duckie); color: var(--plum); border: 3px solid #fff; box-shadow: 0 6px 18px rgba(91,53,146,.35); z-index: 20 }
+@media (min-width: 800px) { .fab { bottom: 24px } }
+.hscroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px } .hscroll .mini { flex: 0 0 180px }
+.idea-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px }
+.idea { background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); cursor: pointer; display: flex; flex-direction: column }
+.idea-img { width: 100%; max-height: 180px; object-fit: cover } .idea-b { padding: 10px 12px } .idea p { margin: 6px 0; white-space: pre-wrap; word-break: break-word }
+.ln { color: var(--grape); word-break: break-all }
+.st-spark { background: #fff3b0; color: #6a5200 } .st-exploring { background: #e7d9ff; color: var(--plum) } .st-planned { background: #d6f5ef; color: #0c5a5a } .st-made { background: var(--grape); color: #fff }
+.capture { display: flex; gap: 8px; margin-bottom: 10px; background: var(--surface); border: 2px dashed var(--shell); padding: 8px; border-radius: var(--radius) } .capture input { border: 0 }
+.toolbar { display: flex; gap: 6px; overflow-x: auto; padding: 4px 0 8px; align-items: center } .toolbar button { padding: 6px 12px; font-size: .85rem }
+.toolbar.sel { background: var(--surface-2); border-radius: 999px; padding: 4px 10px; margin-bottom: 6px }
+.bgpick { display: flex; align-items: center; gap: 4px; margin: 0; white-space: nowrap } .bgpick input[type=color] { width: 36px; height: 32px; padding: 0 } .bgpick input[type=range] { width: 90px; padding: 0 }
+.title-in { flex: 1; font: 700 1.2rem var(--font-display); border-color: transparent; background: transparent; color: var(--plum) } [data-theme=dark] .title-in { color: var(--duckie) }
+.stage-wrap { position: relative; height: calc(100vh - 250px); min-height: 380px; overflow: hidden; border-radius: var(--radius); border: 2px solid var(--border); touch-action: none; background-image: radial-gradient(rgba(142,95,208,.18) 1.5px, transparent 1.5px) !important; background-size: 26px 26px !important }
+.stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; width: 1px; height: 1px }
+.tile { position: absolute; touch-action: none; user-select: none; cursor: grab; border-radius: 10px }
+.t-image { background: #fff; padding: 6px; box-shadow: 0 6px 16px rgba(60,30,100,.2) } .t-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; pointer-events: none }
+.t-image .cap { position: absolute; left: 6px; right: 6px; bottom: 6px; background: rgba(255,255,255,.85); font-size: 12px; padding: 2px 6px; border-radius: 0 0 6px 6px; color: #333 }
+.t-note { padding: 14px; box-shadow: 0 6px 16px rgba(60,30,100,.18); color: #3b2560; font-size: 20px; overflow: hidden } .t-note p { margin: 0; white-space: pre-wrap }
+.t-text h3 { margin: 0; white-space: nowrap; color: inherit; line-height: 1.2 }
+.t-swatch { box-shadow: 0 6px 16px rgba(60,30,100,.2); border: 6px solid #fff; display: flex; align-items: flex-end } .sw-lab { background: #fff; width: 100%; font: 700 14px var(--font-display); padding: 4px; color: #333 }
+.t-link { background: #fff; padding: 12px; font-weight: 700; color: var(--grape); overflow: hidden; box-shadow: 0 6px 16px rgba(60,30,100,.15) }
+.tile.sel { outline: 3px dashed var(--grape); outline-offset: 4px }
+.h-resize, .h-rotate { position: absolute; width: 30px; height: 30px; border-radius: 50%; background: var(--duckie); border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.25); touch-action: none }
+.h-resize { right: -16px; bottom: -16px; cursor: nwse-resize } .h-rotate { left: 50%; top: -44px; margin-left: -15px; cursor: grab; background: var(--shell) }
+.stage-hint { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; color: var(--grape); font: 700 1.2rem var(--font-display); pointer-events: none }
+.small-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); margin-top: 10px }
+.swatches { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 8px } .sw { width: 32px; height: 32px; border-radius: 50%; padding: 0; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.25) } .sw.on { outline: 3px solid var(--grape) } .swatches input { width: 44px; height: 36px; padding: 0 }
+.canvas-box { position: relative; width: 100%; max-width: 640px; margin: 0 auto; aspect-ratio: 1080/1350; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 2px solid var(--border) }
+.canvas-box canvas { position: absolute; inset: 0; width: 100%; height: 100% } .canvas-box .ink { touch-action: none; cursor: crosshair }
+.pl-grid { display: grid; gap: 12px } @media (min-width: 800px) { .pl-grid { grid-template-columns: 2fr 1fr } }
+.pal-big { display: flex; flex-direction: column; gap: 6px; margin: 10px 0 } .pal-big > div { display: flex; align-items: center; gap: 6px; border-radius: var(--radius-sm); padding: 6px 10px; min-height: 52px }
+.pal-big input[type=color] { width: 40px; height: 34px; padding: 0; border: 2px solid #fff } .pal-big button { color: inherit; flex: 1; justify-content: flex-start; font-family: monospace; font-size: 1rem } .pal-big .x { flex: 0 }
+.harm { margin: 6px 0 } .sil { filter: drop-shadow(0 6px 10px rgba(60,30,100,.2)) }
+.toast { position: fixed; left: 50%; bottom: 150px; transform: translateX(-50%); background: var(--plum); color: #fff; padding: 10px 18px; border-radius: 999px; font-weight: 700; z-index: 99 }
+.slot { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 8px } .slot small { width: 80px; text-transform: uppercase; font-weight: 800; color: var(--grape); font-size: .7rem } .slot b { flex: 1 } .slot.locked { border-color: var(--duckie); background: #fffbe6 } [data-theme=dark] .slot.locked { background: #3a3410 }
+.big { padding: 12px 22px; font-size: 1.05rem }
+.grid.wide { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) }
+.c-top { height: 170px; display: grid; place-items: center; background: linear-gradient(135deg, var(--shell), var(--duckie)); overflow: hidden } .c-top img { width: 100%; height: 100%; object-fit: cover }
+.chip.tog { cursor: pointer; border: 2px solid var(--border); padding: 5px 10px; font-size: .8rem } .chip.tog.on { background: var(--grape); color: #fff; border-color: var(--grape) }
+.pick-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center } .pick { position: relative; width: 72px; height: 72px; border-radius: 12px; overflow: hidden; border: 3px solid var(--border); cursor: pointer } .pick.on { border-color: var(--grape) } .pick img { width: 100%; height: 100%; object-fit: cover } .rm { position: absolute; top: 0; right: 0; background: #fff; border-radius: 50% }
+.ref-big { width: 100%; max-height: 50vh; object-fit: contain; border-radius: var(--radius) }
+.masonry figure { cursor: pointer } figcaption { padding-top: 4px }
+@media print { .nav, .top, .fab, .actions { display: none !important } .modal { position: static; background: none } .sheet { max-height: none } }
